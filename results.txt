@@ -1,0 +1,86 @@
+RESULTS:
+
+DRUGS DATASET
+drug chosen: Cannabis
+1 ('RF', 'over', 0.8253883823032758)
+2 ('RF', 'normal', 0.8232719801868738)
+3 ('GB', 'normal', 0.8211471349769223)
+4 ('SVM', 'normal', 0.8142406844534504)
+5 ('GB', 'over', 0.8110238658110998)
+6 ('MLP', 'normal', 0.8084008780817291)
+7 ('GB', 'under', 0.8068023190363615)
+8 ('RF', 'under', 0.8051896881684115)
+9 ('SVM', 'under', 0.7828914781042441)
+10 ('MLP', 'under', 0.781833277046043)
+11 ('SVM', 'over', 0.7807919621749407)
+12 ('MLP', 'over', 0.7781295733423392)
+13 ('KNN', 'normal', 0.7621861983564112)
+14 ('DT', 'over', 0.7585190813914218)
+15 ('DT', 'normal', 0.7579365079365079)
+16 ('KNN', 'over', 0.7462962962962962)
+17 ('DT', 'under', 0.7399189463019249)
+18 ('KNN', 'under', 0.7378166160081053)
+
+LABOUR DATASET
+1 ('GB', 'over', 0.925)
+2 ('DT', 'normal', 0.905)
+3 ('RF', 'under', 0.9)
+4 ('DT', 'over', 0.885)
+5 ('RF', 'normal', 0.8800000000000001)
+6 ('RF', 'over', 0.875)
+7 ('GB', 'under', 0.8550000000000001)
+8 ('GB', 'normal', 0.85)
+9 ('DT', 'under', 0.845)
+10 ('MLP', 'normal', 0.8300000000000001)
+11 ('MLP', 'under', 0.8099999999999999)
+12 ('SVM', 'normal', 0.78)
+13 ('MLP', 'over', 0.78)
+14 ('KNN', 'normal', 0.775)
+15 ('KNN', 'over', 0.765)
+16 ('SVM', 'under', 0.755)
+17 ('SVM', 'over', 0.75)
+18 ('KNN', 'under', 0.6950000000000001)
+
+HEART DATASET
+1 ('MLP', 'under', 0.8551724137931036)
+2 ('MLP', 'over', 0.8485057471264368)
+3 ('SVM', 'normal', 0.8419540229885056)
+4 ('SVM', 'over', 0.8419540229885056)
+5 ('RF', 'under', 0.8416091954022988)
+6 ('MLP', 'normal', 0.8416091954022988)
+7 ('SVM', 'under', 0.8385057471264368)
+8 ('RF', 'normal', 0.8350574712643679)
+9 ('KNN', 'over', 0.8317241379310346)
+10 ('RF', 'over', 0.8282758620689655)
+11 ('KNN', 'normal', 0.8248275862068966)
+12 ('KNN', 'under', 0.8181609195402298)
+13 ('GB', 'normal', 0.8044827586206896)
+14 ('GB', 'over', 0.8011494252873563)
+15 ('DT', 'normal', 0.800919540229885)
+16 ('GB', 'under', 0.797816091954023)
+17 ('DT', 'over', 0.7944827586206896)
+18 ('DT', 'under', 0.7879310344827587)
+
+
+FRIEDMAN TEST:
+
+Statistics=12.543, p=0.028
+REJECT H0: Different distributions
+n = 5 k = 6
+The critical difference value is: 3.3717399069323246
+
+Table of critical difference between the algorithms (1 for critical difference, 0 for no critical difference)
+
+    DT RF SVM KNN MLP GB
+DT   0  0   0   0   0  0
+RF   0  0   0   1   0  0
+SVM  0  0   0   0   0  0
+KNN  0  1   0   0   0  0
+MLP  0  0   0   0   0  0
+GB   0  0   0   0   0  0
+
+The critical difference is between these algorithms:
+
+ RF and KNN with a difference of 3.6000000000000005
+
+
