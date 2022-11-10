@@ -49,10 +49,10 @@ def CrossValidate(classifier, features, labels, sample_balancer=None):
 	scores = cross_validate(class_balancing_pipeline, features, labels, scoring=scoring, cv=cross_validation, n_jobs=-1)
 	return scores
 
-##########
-
 ########## Function to perform grid search and cross validation
 def gridSearch(classifier, features, labels, sample_balancer=None):
+
+	# parameter tuning dictionary for grid search
 	parameters = {
 	'DT' :{ 
 	'decisiontreeclassifier__criterion': ['gini', 'entropy', 'log_loss'],
@@ -93,6 +93,7 @@ def gridSearch(classifier, features, labels, sample_balancer=None):
 
 ########## Computation for the algorithms
 
+# initiate cross validation on the drug dataset
 def scoresForCrossValidation_Drugs():
 	scores_dict = {}
 	i = 0
@@ -118,21 +119,21 @@ def scoresForCrossValidation_Drugs():
 	with open('./pickles/drugs_scores', 'wb') as handle:
 		pickle.dump(scores_dict, handle)
 
+# initiate cross validation on the labour or heart dataset 
 def scoresForCrossValidation_Labour_Heart(df, label_column, pickle_name):
 	labels = df.pop(label_column)
 	scores_dict={}
 	for classifier in classifiers:
 
+		#cross validation on normal data
 		scores_normal = gridSearch(classifier, df, labels)
 
-		# oversample
+		# cross validation on oversampled data
 		oversampler = RandomOverSampler(sampling_strategy='minority')
-		#scores_over = CrossValidate(classifier, df, labels, sample_balancer=oversampler)
 		scores_over = gridSearch(classifier, df, labels, sample_balancer=oversampler)
 
-		# undersample
+		# cross validation on undersampled data
 		undersampler = RandomUnderSampler(sampling_strategy='majority')
-		#scores_under = CrossValidate(classifier, df, labels, sample_balancer=undersampler)
 		scores_under = gridSearch(classifier, df, labels, sample_balancer=undersampler)
 
 		scores_dict[classifier[0]] = {'normal': scores_normal, 'over': scores_over, 'under': scores_under}
@@ -170,6 +171,7 @@ def rankAverageMetric_Labour_Heart(scores_dict):
 
 ########## feature transformation functions
 
+# feature transformation function for the labour dataset
 def FeatureTransformation_Labour():
 	# One hot Encode Labour relations dataframe
 	labour_events_transformed = pd.get_dummies(lb.labour_events, columns=['cola', 'pension', 'vacation', 'dntl_ins', 'empl_hplan'])
@@ -198,6 +200,7 @@ def FeatureTransformation_Labour():
 
 	return labour_events_transformed
 
+# feature transformation function for the heart dataset
 def FeatureTransformation_Heart():
 	# One hot Encode Labour relations dataframe
 	ha_transformed = pd.get_dummies(ha, columns=['cp', 'restecg', 'slope', 'ca', 'thal'])
